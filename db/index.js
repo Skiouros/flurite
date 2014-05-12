@@ -134,22 +134,25 @@
       query.connectionParameters = conn_str;
       this.schema = require("./schema");
       this.Model = require("./model");
+      this.models = {};
       return this;
     };
 
-    Database.prototype.load_models = function() {
+    Database.prototype.load_model = function(model) {
+      model = require(model);
+      return this.models[model.name] = model;
+    };
+
+    Database.prototype.load_models = function(dir) {
       var model, name, _ref, _results;
-      this.models = {};
-      fs.readdirSync("models/").filter((function(_this) {
+      fs.readdirSync(dir).filter((function(_this) {
         return function(file) {
           return path.extname(file) === ".js";
         };
       })(this)).forEach((function(_this) {
         return function(file) {
-          var model;
           console.log(file);
-          model = require("models/" + file);
-          return _this.models[model.name] = model;
+          return _this.load_model("" + dir + "/" + file);
         };
       })(this));
       _ref = this.models;

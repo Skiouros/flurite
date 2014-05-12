@@ -1,4 +1,3 @@
-# db = require "./db"
 db = require "../db"
 schema = db.schema
 types = schema.types

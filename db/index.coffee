@@ -67,18 +67,20 @@ class Database
 
         @schema = require "./schema"
         @Model = require "./model"
-        # @load_models()
+        @models = {}
         @
 
-    load_models: ->
-        @models = {}
+    load_model: (model) ->
+        model = require model
+        @models[model.name] = model
+
+    load_models: (dir) ->
         fs
-            .readdirSync("models/")
+            .readdirSync(dir)
             .filter (file) => path.extname(file) == ".js"
             .forEach (file) =>
                 console.log file
-                model = require("models/#{file}")
-                @models[model.name] = model
+                @load_model "#{dir}/#{file}"
 
             for name, model of @models
                 model.associate @models if model.associate
