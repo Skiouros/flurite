@@ -1,17 +1,17 @@
 {
-    "name": "flurite",
-    "version": "0.0.1",
-    "author": "Zach Hamlin",
-    "description": "Some utitilese to go with node and epxress",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Skiouros/flurite.git"
-    },
-    "dependencies": {
-        "pg": "3.x",
-        "pg-query": "^0.8.0",
-        "underscore": "^1.6.0",
-        "cli-color": "^0.2.3"
-    }
+  "name": "flurite",
+  "version": "0.0.1",
+  "author": "Zach Hamlin",
+  "description": "Some utitilese to go with node and epxress",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Skiouros/flurite.git"
+  },
+  "dependencies": {
+    "pg.js": "*",
+    "pg-query": "^0.8.0",
+    "underscore": "^1.6.0",
+    "cli-color": "^0.2.3"
+  }
 }
